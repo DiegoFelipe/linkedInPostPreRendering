@@ -14,7 +14,7 @@ export default function StaticGen(props) {
   }
   return (
     <>
-      <h1>This is all about some dummy content</h1>
+      <h1>This is all about some dummy content with SSR</h1>
       <p>
         Hey! Follow{" "}
         <a href="https://www.linkedin.com/company/codinsofteng/">
@@ -34,11 +34,10 @@ export default function StaticGen(props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const comments = await getComments();
 
   return {
     props: { comments },
-    revalidate: 3600, // pre-render this page each 3600 seconds
   };
 }
